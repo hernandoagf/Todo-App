@@ -1,7 +1,11 @@
-function App() {
+import Heading from './components/Heading';
+import TodoList from './components/TodoList'
+
+const App = () => {
   return (
     <div className="App">
-      <h1>Todo App</h1>
+      <Heading />
+      <TodoList />
     </div>
   );
 }
