@@ -6,14 +6,16 @@ const AddTodo = () => {
 
   return (
     <div className="card">
-      <div className="check-circle"></div>
-      <input 
-        className="todo-input"
-        type="text" 
-        value={newTodo} 
-        onChange={e => setNewTodo(e.target.value)} 
-        placeholder="Create a new todo..." 
-      />
+      <div className="card-item">
+        <div className="check-circle"></div>
+        <input 
+          className="todo-input"
+          type="text" 
+          value={newTodo} 
+          onChange={e => setNewTodo(e.target.value)} 
+          placeholder="Create a new todo..." 
+          />
+      </div>
     </div>
   )
 }
