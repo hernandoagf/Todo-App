@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TodoItem from './TodoItem'
 import { tasks } from '../data/data'
 
 const TodoList = () => {
 
-  const [todos, setTodos] = useState(tasks)
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    setTodos(tasks)
+  }, [])
 
   const todoList = todos
     .map(todo => <TodoItem 
