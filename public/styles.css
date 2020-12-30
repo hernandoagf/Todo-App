@@ -11,8 +11,22 @@
 	--dark-mode-card-background: hsl(237, 14%, 26%);
 	--dark-mode-card-primary-text: hsl(234, 39%, 85%);
 	--dark-mode-card-dark-text: hsl(234, 11%, 52%);
+	--blue-text: hsl(220, 98%, 61%);
 	--dark-mode-circle-color: hsl(233, 14%, 35%);
 	--dark-mode-shadow: hsla(235, 21%, 11%, 0.5);
+	--check-background: linear-gradient(
+		135deg,
+		hsl(192, 100%, 67%),
+		hsl(280, 87%, 65%)
+	);
+
+	/* Light mode */
+	--light-mode-background-color: hsl(0, 0%, 98%);
+	--light-mode-card-background: white;
+	--light-mode-circle-color: hsl(236, 33%, 92%);
+	--light-mode-shadow: hsl(233, 11%, 84%);
+	--light-mode-dark-text: hsl(236, 9%, 61%);
+	--light-mode-primary-text: hsl(235, 19%, 35%);
 }
 
 body {
@@ -38,6 +52,7 @@ body {
 
 .heading {
 	width: 100%;
+	max-width: 550px;
 	text-align: center;
 }
 
@@ -53,8 +68,13 @@ body {
 	letter-spacing: 0.6rem;
 }
 
+#theme-switch img {
+	width: 80%;
+}
+
 .card {
 	width: 100%;
+	max-width: 550px;
 	background-color: var(--dark-mode-card-background);
 	margin-bottom: 1rem;
 	font-weight: 400;
@@ -67,6 +87,10 @@ body {
 	box-shadow: 1px 1px 3px var(--dark-mode-shadow);
 }
 
+.card.column {
+	box-shadow: 0px 15px 20px 5px var(--dark-mode-shadow);
+}
+
 .column {
 	flex-direction: column;
 }
@@ -77,14 +101,21 @@ body {
 	border-radius: 50%;
 	border: 1px solid var(--dark-mode-circle-color);
 	margin-right: 1.3em;
-}
-
-.check-circle.completed {
-	background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-	background-size: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.check-circle.completed {
+	background: var(--check-background);
+	background-size: 100%;
+}
+
+.check-circle-fill {
+	width: calc(100% - 2px);
+	height: calc(100% - 2px);
+	border-radius: 50%;
+	background-color: var(--dark-mode-card-background);
 }
 
 .todo-input {
@@ -113,6 +144,12 @@ body {
 
 .card-item.list {
 	position: relative;
+	cursor: pointer;
+}
+
+.card-item.list:hover .check-circle {
+	border: none;
+	background-image: var(--check-background);
 }
 
 .card-item.list::after {
@@ -139,4 +176,103 @@ body {
 
 .cross {
 	margin-left: auto;
+}
+
+.clear-completed,
+#theme-switch {
+	cursor: pointer;
+}
+
+.clear-completed:hover {
+	color: var(--dark-mode-card-primary-text);
+}
+
+#footer .card-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#footer h3 {
+	margin: 0 0.7em;
+	cursor: pointer;
+	color: var(--dark-mode-card-dark-text);
+}
+
+#footer h3:hover {
+	color: var(--dark-mode-card-primary-text);
+}
+
+#footer h3.selected {
+	color: var(--blue-text);
+}
+
+/* Light Mode */
+body.light {
+	background-image: url('./images/bg-mobile-light.jpg');
+	background-color: var(--light-mode-background-color);
+	color: white;
+}
+
+body.light .card {
+	background-color: var(--light-mode-card-background);
+	box-shadow: 1px 1px 3px var(--light-mode-shadow);
+}
+
+body.light .card.column {
+	box-shadow: 0px 30px 30px 2px hsla(0, 20%, 18%, 0.08);
+}
+
+body.light .check-circle {
+	border: 1px solid var(--light-mode-circle-color);
+}
+
+body.light .card-item.list::after {
+	background-color: var(--light-mode-circle-color);
+}
+
+body.light .check-circle-fill {
+	background-color: var(--light-mode-card-background);
+}
+
+body.light .card,
+body.light .todo-input,
+body.light .clear-completed:hover,
+body.light #footer h3:hover {
+	color: var(--light-mode-primary-text);
+}
+
+body.light .todo-input::placeholder,
+body.light .card-item.secondary,
+body.light .task-completed,
+body.light #footer h3 {
+	color: var(--light-mode-dark-text);
+}
+
+body.light #footer h3.selected {
+	color: var(--blue-text);
+}
+
+@media (min-width: 600px) {
+	body {
+		background-image: url('./images/bg-desktop-dark.jpg');
+	}
+
+	body.light {
+		background-image: url('./images/bg-desktop-light.jpg');
+	}
+
+	.cross {
+		visibility: hidden;
+	}
+
+	.card-item.list:hover .cross {
+		visibility: visible;
+	}
+
+	#footer {
+		width: auto;
+		margin-top: -60px;
+		box-shadow: none;
+	}
 }

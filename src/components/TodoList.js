@@ -1,8 +1,8 @@
 import TodoItem from './TodoItem'
 
-const TodoList = ({ todos, itemsLeft, handleClick, clearCompleted }) => {
+const TodoList = ({todos, todosView, itemsLeft, handleClick, clearCompleted }) => {
 
-  const todoList = todos
+  const todoList = todosView
     .map(todo => <TodoItem 
       handleClick={handleClick}
       key={todo.task} 
@@ -13,8 +13,8 @@ const TodoList = ({ todos, itemsLeft, handleClick, clearCompleted }) => {
     <div className="card column">
       {todoList}
       <div className="card-item secondary">
-        <p>{itemsLeft} {itemsLeft === 1 ? 'item' : 'items'} left</p>
-        <p onClick={clearCompleted}>Clear Completed</p>
+        <h4>{itemsLeft} {itemsLeft === 1 ? 'item' : 'items'} left</h4>
+        <h4 className="clear-completed" onClick={clearCompleted}>Clear Completed</h4>
       </div>
     </div>
   )
