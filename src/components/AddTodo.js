@@ -1,8 +1,4 @@
-import { useState } from 'react'
-
-const AddTodo = () => {
-
-  const [newTodo, setNewTodo] = useState('')
+const AddTodo = ({ handleSubmit, newTodo, handleInputChange }) => {
 
   return (
     <div className="card">
@@ -12,7 +8,8 @@ const AddTodo = () => {
           className="todo-input"
           type="text" 
           value={newTodo} 
-          onChange={e => setNewTodo(e.target.value)} 
+          onChange={handleInputChange} 
+          onKeyUp={handleSubmit}
           placeholder="Create a new todo..." 
           />
       </div>
