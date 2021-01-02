@@ -25,7 +25,7 @@ const TodoItem = ({ todo: { task, completed }, view, handleClick, index }) => {
           <div className={completed ? 'check-circle completed' : 'check-circle'}>
             {completed ? checkIcon : checkFill}
           </div>
-          <span><p className={completed ? 'task-completed' : ''}>{task}</p></span>
+          <p className={completed ? 'task-completed' : ''}>{task}</p>
           <div className="cross">
             <img src={cross} alt="close cross"/>
           </div>

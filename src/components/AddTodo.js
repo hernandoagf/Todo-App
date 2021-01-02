@@ -7,6 +7,7 @@ const AddTodo = ({ handleSubmit, newTodo, handleInputChange }) => {
         <input 
           className="todo-input"
           type="text" 
+          title="New Todo input"
           value={newTodo} 
           onChange={handleInputChange} 
           onKeyUp={handleSubmit}
