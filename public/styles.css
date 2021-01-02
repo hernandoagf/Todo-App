@@ -91,6 +91,10 @@ body {
 	box-shadow: 0px 15px 20px 5px var(--dark-mode-shadow);
 }
 
+[data-rbd-droppable-context-id='1'] {
+	width: 100%;
+}
+
 .column {
 	flex-direction: column;
 }
@@ -138,13 +142,23 @@ body {
 	width: 100%;
 	padding: 0.9rem 1.2rem;
 	display: flex;
+	border-radius: 5px;
 	justify-content: flex-start;
 	align-items: center;
+	background-color: var(--dark-mode-card-background);
 }
 
 .card-item.list {
 	position: relative;
 	cursor: pointer;
+}
+
+.card-item.list.visible {
+	display: flex;
+}
+
+.card-item.list.invisible {
+	display: none;
 }
 
 .card-item.list:hover .check-circle {
@@ -167,6 +181,8 @@ body {
 	padding: 1.2rem;
 	display: flex;
 	justify-content: space-between;
+	z-index: 2;
+	background: none;
 }
 
 .task-completed {
@@ -185,6 +201,12 @@ body {
 
 .clear-completed:hover {
 	color: var(--dark-mode-card-primary-text);
+}
+
+.footer-container {
+	z-index: 1;
+	width: 100%;
+	max-width: 550px;
 }
 
 #footer .card-item {
@@ -207,6 +229,13 @@ body {
 	color: var(--blue-text);
 }
 
+.footer-instructions {
+	text-align: center;
+	font-size: 0.7em;
+	color: var(--dark-mode-card-dark-text);
+	margin-top: 4em;
+}
+
 /* Light Mode */
 body.light {
 	background-image: url('./images/bg-mobile-light.jpg');
@@ -225,6 +254,10 @@ body.light .card.column {
 
 body.light .check-circle {
 	border: 1px solid var(--light-mode-circle-color);
+}
+
+body.light .card-item {
+	background-color: var(--light-mode-card-background);
 }
 
 body.light .card-item.list::after {
@@ -251,6 +284,10 @@ body.light #footer h3 {
 
 body.light #footer h3.selected {
 	color: var(--blue-text);
+}
+
+body.light .footer-instructions {
+	color: var(--light-mode-dark-text);
 }
 
 @media (min-width: 600px) {
