@@ -91,7 +91,7 @@ body {
 	box-shadow: 0px 15px 20px 5px var(--dark-mode-shadow);
 }
 
-[data-rbd-droppable-context-id='1'] {
+[data-rbd-droppable-id='tasks'] {
 	width: 100%;
 }
 
